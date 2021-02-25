@@ -1,9 +1,11 @@
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 
-const config = require("config");
+// const config = require("config");
 
-const secretOrKey = config.get("secretOrKey");
+require("dotenv").config({ path: "../config/.env" });
+
+const secretOrKey = process.env.secretOrKey;
 
 const jwt = require("jsonwebtoken");
 
@@ -56,10 +58,7 @@ exports.userLogin = async (req, res) => {
 
     const token = await jwt.sign(payload, secretOrKey);
 
-    
-    return res.status(200).json({token : `Bearer ${token}`})
-
-
+    return res.status(200).json({ token: `Bearer ${token}` });
   } catch (error) {
     console.error(error);
     res.status(404).json({ errors: error });
