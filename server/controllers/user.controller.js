@@ -1,8 +1,6 @@
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 
-// const config = require("config");
-
 require("dotenv").config({ path: "../config/.env" });
 
 const secretOrKey = process.env.secretOrKey;

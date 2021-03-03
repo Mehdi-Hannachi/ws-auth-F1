@@ -11,7 +11,7 @@ const Register = () => {
 
   const dispatch = useDispatch();
 
-  const history = useHistory();
+  // const history = useHistory();
 
   const addUser = () => {
     dispatch(
@@ -28,7 +28,7 @@ const Register = () => {
     setPhoneNumber("");
     setPassword("");
 
-    history.push("/login");
+    // history.push("/login");
   };
 
   return (

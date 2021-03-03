@@ -7,13 +7,8 @@ const Login = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
-  const [token, setToken] = useState();
-
-  useEffect(() => {
-    setToken(localStorage.getItem("token"));
-  }, []);
-
   const loading = useSelector((state) => state.userReducer.loading);
+  const isAuth = useSelector((state) => state.userReducer.isAuth);
 
   const dispatch = useDispatch();
 
@@ -28,11 +23,11 @@ const Login = () => {
     );
   };
 
+  if (isAuth) return <Redirect to="/profile" />;
+
   return (
     <div className="container">
-      {token ? (
-        <Redirect to="/profile" />
-      ) : loading ? (
+      {loading ? (
         <h1> Please wait </h1>
       ) : (
         <div className="col-md-3 offset-mt-3">
